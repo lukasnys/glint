@@ -7,6 +7,7 @@ on:
     # filtering branches here prevents duplicate builds from pull_request and push
     branches:
       - main
+      - native-types
     # always run CI for tags
     tags:
       - '*'
@@ -124,6 +125,40 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install Dependencies
         run: yarn add --dev -W typescript@next
+      - name: Build
+        run: yarn build
+      - name: Run Tests
+        uses: coactions/setup-xvfb@v1
+        with:
+          run: yarn test
+          
+  test-dt-types:
+    name: Test DT Ember Types
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - name: Locate Yarn Cache
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Resolve `ember-source`
+        # Resolve any `ember-source` usage to a version before it began shipping types, so
+        # that when we add `@types/ember` below nothing conflicts.
+        run: |
+          pkg=$(jq '.resolutions["ember-source"] = "~4.0.0"' package.json)
+          echo "$pkg" > package.json
+      - name: Install Dependencies
+        run: yarn add --dev -W @types/ember
       - name: Build
         run: yarn build
       - name: Run Tests
