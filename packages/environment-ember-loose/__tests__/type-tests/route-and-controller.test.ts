@@ -1,3 +1,5 @@
+import 'ember-source/types';
+import 'ember-source/types/preview';
 import Route from '@ember/routing/route';
 import Controller from '@ember/controller';
 import { expectTypeOf } from 'expect-type';

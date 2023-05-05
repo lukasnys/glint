@@ -1,3 +1,5 @@
+import 'ember-source/types';
+import 'ember-source/types/preview';
 import Modifier, { modifier, type ArgsFor } from 'ember-modifier';
 import { NamedArgsMarker, resolve } from '@glint/environment-ember-loose/-private/dsl';
 import { expectTypeOf } from 'expect-type';

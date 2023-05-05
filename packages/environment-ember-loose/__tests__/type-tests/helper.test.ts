@@ -1,3 +1,5 @@
+import 'ember-source/types';
+import 'ember-source/types/preview';
 import Helper, { helper } from '@ember/component/helper';
 import { resolve, NamedArgsMarker } from '@glint/environment-ember-loose/-private/dsl';
 import { expectTypeOf } from 'expect-type';

@@ -5,3 +5,4 @@ tsconfig.tsbuildinfo
 !registry/**/*.d.ts
 !-private/dsl/**/*.d.ts
 !-private/intrinsics/**/*.d.ts
+!use-ember-source-types.d.ts

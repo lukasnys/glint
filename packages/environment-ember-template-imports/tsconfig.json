@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.compileroptions.json",
-  "include": ["-private"],
+  "include": ["-private", "use-ember-source-types.d.ts"],
   "references": [
     { "path": "../environment-ember-loose" },
     { "path": "../core" },

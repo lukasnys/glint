@@ -1,3 +1,5 @@
+import 'ember-source/types';
+import 'ember-source/types/preview';
 import templateOnlyComponent from '@ember/component/template-only';
 import {
   templateForBackingValue,

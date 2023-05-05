@@ -1,5 +1,5 @@
 {
   "extends": "../../tsconfig.compileroptions.json",
-  "include": ["registry", "-private"],
+  "include": ["registry", "-private", "use-ember-source-types.d.ts"],
   "references": [{ "path": "../template" }, { "path": "../core" }]
 }

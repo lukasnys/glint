@@ -35,7 +35,8 @@
     "@types/ember__object": "^4.0.4",
     "@types/ember__routing": "^4.0.11",
     "ember-cli-htmlbars": "^6.0.1",
-    "ember-modifier": "^3.2.7 || ^4.0.0"
+    "ember-modifier": "^3.2.7 || ^4.0.0",
+    "ember-source": "^4.8.0 || >=5.0.0-alpha.1"
   },
   "peerDependenciesMeta": {
     "@types/ember__array": {
@@ -58,16 +59,13 @@
     },
     "ember-modifier": {
       "optional": true
+    },
+    "ember-source": {
+      "optional": true
     }
   },
   "devDependencies": {
     "@glimmer/component": "^1.1.2",
-    "@types/ember__array": "^4.0.2",
-    "@types/ember__component": "^4.0.10",
-    "@types/ember__controller": "^4.0.2",
-    "@types/ember__destroyable": "^4.0.1",
-    "@types/ember__object": "^4.0.4",
-    "@types/ember__routing": "^4.0.11",
     "ember-modifier": "^3.2.7 || ^4.0.0",
     "expect-type": "^0.15.0",
     "vitest": "^0.22.0"
