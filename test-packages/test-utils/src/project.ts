@@ -94,6 +94,8 @@ export class Project {
       JSON.stringify(tsconfig, null, 2)
     );
 
+    ensureEmberSourceTypesAreImported(tsconfig, project);
+
     return project;
   }
 
@@ -197,6 +199,23 @@ export class Project {
 
   public buildWatch(options: Options = {}): Watch {
     return new Watch(this.build({ ...options, flags: ['--watch'], reject: false }));
+  }
+}
+
+function ensureEmberSourceTypesAreImported(tsconfig: TsconfigWithGlint, project: Project): void {
+  let environment = tsconfig.glint?.environment ?? [];
+  let environments =
+    typeof environment === 'string'
+      ? [environment]
+      : Array.isArray(environment)
+      ? environment
+      : Object.keys(environment);
+
+  if (environments.includes('ember-loose') || environments.includes('ember-template-imports')) {
+    project.write(
+      'use-ember-source-types.d.ts',
+      `import 'ember-source/types';\nimport 'ember-source/types/preview';\n`
+    );
   }
 }
 
